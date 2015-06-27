@@ -1,0 +1,24 @@
+function cut(datafile,variables,time)
+str = strcat('../',datafile,'/00',num2str(time),'.sdf');
+[b,h] = lv(str);
+data=gd(b,h,variables);
+grid=gd(b,h,'grid');
+x=grid.x; y=grid.y;
+x1=x(1:length(grid.x)-1);
+y1=y(1:length(grid.y)-1);
+
+n=floor(0.5*length(y1));
+data_cut=data(1:length(x1),n);
+
+
+set(gcf,'position',[50,50,600,400]);
+set(gca, 'fontsize',11);
+set(gca, 'linewidth',2);
+
+plot(x1*1e6,data_cut,'r','LineWidth',2.5);
+xlabel('x (\mum)'); ylabel('number density');
+hold on;
+%axis square
+%axis equal tight;
+%axis equal
+end
