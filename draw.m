@@ -15,14 +15,14 @@ y1=y(1:length(grid.y)-1);
 
 % Plot range (colorbar) setting
 flag=0;
-if maxvalue==-1                 % Default setting
+if maxvalue==-1                      % Default setting
     maxvalue=max(max(data));
 end
 if minvalue==-1
     minvalue=min(min(data));
     flag=1;
 end
-if minvalue<0 && flag==1                % Test if the plot is all above 0
+if minvalue<0 && flag==1             % Test if the plot is all above 0
     if maxvalue<abs(minvalue)
         maxvalue=abs(minvalue);      % Make colorbar symmetric
     end
