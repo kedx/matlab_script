@@ -1,25 +1,20 @@
-function draw(datafile,variables,time,minvalue,maxvalue)
-%=======================================================
-% Plot range controled by minvalue and maxvalue.
-% If don't need change, set as -1 to use default value.
-%=======================================================
-
+function den_log(datafile,variables,time,minvalue,maxvalue)
 % Get the data
 str = strcat('../',datafile,'/00',num2str(time),'.sdf');
 [b,h] = lv(str);
-data=gd(b,h,variables);
+data1=gd(b,h,variables);
 grid=gd(b,h,'grid');
 x=grid.x; y=grid.y;
 x1=x(1:length(grid.x)-1);
 y1=y(1:length(grid.y)-1);
-
+data=log10(data1);
 % Plot range (colorbar) setting
 flag=0;
 if maxvalue==-1                      % Default setting
     maxvalue=max(max(data));
 end
 if minvalue==-1
-    minvalue=min(min(data));
+    minvalue=20;
     flag=1;
 end
 if minvalue<0 && flag==1             % Test if the plot is all above 0
