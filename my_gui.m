@@ -22,7 +22,7 @@ function varargout = my_gui(varargin)
 
 % Edit the above text to modify the response to help my_gui
 
-% Last Modified by GUIDE v2.5 29-Jun-2015 22:39:28
+% Last Modified by GUIDE v2.5 30-Jun-2015 12:18:55
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -127,7 +127,11 @@ if spectrum==1
     variables=get(handles.edit8,'string');
     time=get(handles.edit4,'string');
     color=get(handles.edit9,'string');
-    figure;
+    if get(handles.checkbox6,'value')==0
+        figure;
+    else
+        figure(1);
+    end
     en(datafile,variables,time,color);
 end
 % =============== 2D Log Plot =====================
@@ -140,6 +144,17 @@ if lognot==1
     minvalue=str2num(get(handles.edit6,'string'));
     figure;
     den_log(datafile,variables,time,minvalue,maxvalue);
+end
+% =============== Phase Space =====================
+phase=get(handles.checkbox7,'value');
+if phase==1
+    datafile=get(handles.edit2,'string');
+    variables=get(handles.edit11,'string');
+    time=get(handles.edit4,'string');
+    maxvalue=str2num(get(handles.edit5,'string'));
+    minvalue=str2num(get(handles.edit6,'string'));
+    figure;
+    x_px(datafile,variables,time,minvalue,maxvalue);
 end
 guidata(hObject, handles);
 
@@ -264,6 +279,7 @@ step1=str2num(step);
 t=t+step1;
 time1=num2str(t,'%02d');
 set(handles.edit4,'string',time1);
+set(handles.slider1,'value',t);
 
 
 % --- Executes on button press in pushbutton4.
@@ -276,8 +292,9 @@ t=str2num(time);
 step=get(handles.edit7,'string');
 step1=str2num(step);
 t=t-step1;
-time1=num2str(t);
+time1=num2str(t,'%02d');
 set(handles.edit4,'string',time1);
+set(handles.slider1,'value',t);
 
 
 
@@ -468,3 +485,119 @@ function checkbox5_Callback(hObject, eventdata, handles)
 % handles    structure with handles and user data (see GUIDATA)
 
 % Hint: get(hObject,'Value') returns toggle state of checkbox5
+
+
+% --- Executes on selection change in popupmenu1.
+function popupmenu1_Callback(hObject, eventdata, handles)
+% hObject    handle to popupmenu1 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+index_selected = get(hObject,'Value');
+list = get(hObject,'String');
+handles.selected = list{index_selected};
+set(handles.edit2,'string',handles.selected);
+guidata(hObject,handles);
+% Hints: contents = cellstr(get(hObject,'String')) returns popupmenu1 contents as cell array
+%        contents{get(hObject,'Value')} returns selected item from popupmenu1
+
+
+% --- Executes during object creation, after setting all properties.
+function popupmenu1_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to popupmenu1 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: popupmenu controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+
+% --- Executes on button press in pushbutton7.
+function pushbutton7_Callback(hObject, eventdata, handles)
+% hObject    handle to pushbutton7 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+file=dir('..');
+set(handles.popupmenu1,'String',{file.name});
+
+
+% --- Executes on slider movement.
+function slider1_Callback(hObject, eventdata, handles)
+% hObject    handle to slider1 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+time=get(handles.slider1,'value');
+time1=floor(time);
+time2=num2str(time1,'%02d');
+set(handles.edit4,'string',time2);
+% Hints: get(hObject,'Value') returns position of slider
+%        get(hObject,'Min') and get(hObject,'Max') to determine range of slider
+
+
+% --- Executes during object creation, after setting all properties.
+function slider1_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to slider1 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: slider controls usually have a light gray background.
+if isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor',[.9 .9 .9]);
+end
+
+
+% --- Executes on button press in pushbutton8.
+function pushbutton8_Callback(hObject, eventdata, handles)
+% hObject    handle to pushbutton8 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+value=get(handles.edit5,'string');
+if strcmp(value,'-1')
+    value1='-1';
+else
+    value1=num2str(-str2num(value));
+end
+set(handles.edit6,'string',value1);
+
+
+% --- Executes on button press in checkbox6.
+function checkbox6_Callback(hObject, eventdata, handles)
+% hObject    handle to checkbox6 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hint: get(hObject,'Value') returns toggle state of checkbox6
+
+
+% --- Executes on button press in checkbox7.
+function checkbox7_Callback(hObject, eventdata, handles)
+% hObject    handle to checkbox7 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hint: get(hObject,'Value') returns toggle state of checkbox7
+
+
+
+function edit11_Callback(hObject, eventdata, handles)
+% hObject    handle to edit11 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of edit11 as text
+%        str2double(get(hObject,'String')) returns contents of edit11 as a double
+
+
+% --- Executes during object creation, after setting all properties.
+function edit11_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to edit11 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
