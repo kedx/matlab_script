@@ -22,14 +22,21 @@ The files being saved is at '../pic' folder by default.
 ###Description of source files
 
 cut.m is used to plot a 1D line figure.
+
 draw.m is used to plot a  2D contour plot figure.
+
 den_log.m is used to plot a  2D contour plot figure in log10.
+
 en.m is used to plot a energy spectrum figure.
+
 seps.m is used to save figures in 'eps' or 'pdf' formats.
+
 lv.m is used to list variables in the selected datafile.
+
 gd.m is used to read the SDF file.
+
 x_px is used to plot phase space.
 
 ###Finally
 
-This program is under programming and unfinished. Welcome to tell bugs to me and help improve this program.
+This program is under programming and unfinished. Welcome to tell me the bugs and help improve this program.
