@@ -17,6 +17,16 @@ Start Matlab and change work directory to this folder.
 
 Type "my_gui" to start the GUI program.
 
+Click "list" button to list folders.
+
+Select folder which you like to choose.
+
+Click "show" to show variables. It depend on the bottom "time" bar.
+
+Move "time" bar to your time.
+
+Select plotting styles and click "draw".
+
 The files being saved is at '../pic' folder by default.
 
 ###Description of source files

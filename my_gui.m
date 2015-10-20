@@ -425,7 +425,8 @@ function pushbutton5_Callback(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 filefolder=char(get(handles.edit2,'String'));
-wkdir_name=['../',filefolder,'/','0001.sdf'];
+time=get(handles.edit4,'string');
+wkdir_name=['../',filefolder,'/00',time,'.sdf'];
 [b,h]=lv(wkdir_name);
 size_b=size(b);list_name='Grid Infomation';
 j=1;
