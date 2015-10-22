@@ -487,7 +487,7 @@ function pushbutton6_Callback(hObject, eventdata, handles)
 % handles    structure with handles and user data (see GUIDATA)
 %filename=get(handles.edit10,'string');
 [filename,pathname]=uiputfile('*.eps');
-addpath('altmany-export_fig-97e0640')
+addpath('export_fig')
 fn=[pathname,filename];
 set(figure(1),'position',[50,50,350,300]);
 set(figure(1),'Color','white');
