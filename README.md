@@ -15,7 +15,9 @@ To get started, put this folder along with your datafile folders.
 
 Start Matlab and change work directory to this folder.
 
-Type "my_gui" to start the GUI program.
+Type "gui_win" to start the GUI program under windows.
+
+Type "gui_mac" to start the GUI program under Mac OS X.
 
 Click "list" button to list folders.
 
