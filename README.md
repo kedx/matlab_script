@@ -9,6 +9,8 @@ Every time generate a figure from a SDF file, a long command which has many para
 
 The goal of this program is to give a graphic user interface to get people out of the long command typing business. Using only a mouse pointer to generate figures by selecting or listing different parameters.
 
+Now, this script is only for 2D datafiles. If you want to analyze 1D or 3D datafiles, you can modify the source file on your own.
+
 ###How
 
 To get started, put this folder along with your datafile folders.
@@ -19,9 +21,11 @@ Type "gui_win" to start the GUI program under windows.
 
 Type "gui_mac" to start the GUI program under Mac OS X.
 
+Type "gui_linux" to start the GUI program under Linux.
+
 Click "list" button to list folders.
 
-Select folder which you like to choose.
+Select a folder which you like to analyze.
 
 Click "show" to show variables. It depend on the bottom "time" bar.
 
@@ -29,7 +33,7 @@ Move "time" bar to your time.
 
 Select plotting styles and click "draw".
 
-The files being saved is at '../pic' folder by default.
+The files being saved is at '../pic' folder by default in windows version (so you need to mkdir before saving) and show a window to let you choose in OS X and Linux versions.
 
 ###Description of source files
 
@@ -51,4 +55,4 @@ x_px is used to plot phase space.
 
 ###Finally
 
-This program is under programming and unfinished. Welcome to tell me the bugs and help improve this program.
+This program is under programming and unfinished. Welcome to tell me the bugs and help me improve this program.
