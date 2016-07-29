@@ -1,0 +1,2 @@
+Modified draw.m den_log.m to add prefix support.
+Modified gui_mac.fig and gui_mac.m to add prefix support.

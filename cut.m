@@ -1,5 +1,5 @@
-function cut(datafile,variables,time)
-str = strcat('../',datafile,'/00',num2str(time),'.sdf');
+function cut(datafile,prefix,variables,time)
+str = strcat('../',datafile,'/',prefix,'00',num2str(time),'.sdf');
 [b,h] = lv(str);
 data=gd(b,h,variables);
 grid=gd(b,h,'grid');

@@ -1,6 +1,6 @@
-function den_log(datafile,variables,time,minvalue,maxvalue)
+function den_log(datafile,prefix,variables,time,minvalue,maxvalue)
 % Get the data
-str = strcat('../',datafile,'/00',num2str(time),'.sdf');
+str = strcat('../',datafile,'/',prefix,'00',num2str(time),'.sdf');
 [b,h] = lv(str);
 data1=gd(b,h,variables);
 grid=gd(b,h,'grid');
@@ -28,9 +28,9 @@ end
 %colormap(redblue);
 colormap(jet);
 set(gcf,'position',[50,50,600,400]);
-set(gca, 'fontsize',11,'FontName','Helvetica');
-%set(gca,'XLim', [-12.8 12.8],'YLim',[-6.4,6.4])
 imagesc(x1*1e6,y1*1e6,data',[minvalue,maxvalue]);
+%set(gca,'XLim', [-12.8 12.8],'YLim',[-6.4,6.4])
+set(gca, 'fontsize',15,'FontName','Helvetica');
 axis xy; axis equal tight;
 colorbar;
 xlabel('x (\mum)'); ylabel('y (\mum)');

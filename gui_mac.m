@@ -22,7 +22,7 @@ function varargout = gui_mac(varargin)
 
 % Edit the above text to modify the response to help gui_mac
 
-% Last Modified by GUIDE v2.5 22-Oct-2015 12:26:30
+% Last Modified by GUIDE v2.5 29-Jul-2016 17:13:44
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -104,21 +104,25 @@ function pushbutton1_Callback(hObject, eventdata, handles)
 contour=get(handles.checkbox2,'value');
 if contour==1
     datafile=get(handles.edit2,'string');
+    fix=get(handles.popupmenu5,'string');
+    prefix=fix{get(handles.popupmenu5,'value')};
     variables=get(handles.edit3,'string');
     time=get(handles.edit4,'string');
     maxvalue=str2num(get(handles.edit5,'string'));
     minvalue=str2num(get(handles.edit6,'string'));
     figure;
-    draw(datafile,variables,time,minvalue,maxvalue);
+    draw(datafile,prefix,variables,time,minvalue,maxvalue);
 end
 % =============== 1D Line Plot ===================
 line=get(handles.checkbox3,'value');
 if line==1
     datafile=get(handles.edit2,'string');
+    fix=get(handles.popupmenu5,'string');
+    prefix=fix{get(handles.popupmenu5,'value')};
     variables=get(handles.edit3,'string');
     time=get(handles.edit4,'string');
     figure;
-    cut(datafile,variables,time);
+    cut(datafile,prefix,variables,time);
 end
 % =============== Spectrum Plot ==================
 spectrum=get(handles.checkbox4,'value');
@@ -144,12 +148,14 @@ end
 lognot=get(handles.checkbox5,'value');
 if lognot==1
     datafile=get(handles.edit2,'string');
+    fix=get(handles.popupmenu5,'string');
+    prefix=fix{get(handles.popupmenu5,'value')};
     variables=get(handles.edit3,'string');
     time=get(handles.edit4,'string');
     maxvalue=str2num(get(handles.edit5,'string'));
     minvalue=str2num(get(handles.edit6,'string'));
     figure;
-    den_log(datafile,variables,time,minvalue,maxvalue);
+    den_log(datafile,prefix,variables,time,minvalue,maxvalue);
 end
 % =============== Phase Space =====================
 phase=get(handles.checkbox7,'value');
@@ -432,11 +438,9 @@ function pushbutton5_Callback(hObject, eventdata, handles)
 % handles    structure with handles and user data (see GUIDATA)
 filefolder=char(get(handles.edit2,'String'));
 time=get(handles.edit4,'string');
-if time=='00'
-    wkdir_name=['../',filefolder,'/','0001.sdf'];
-else
-    wkdir_name=['../',filefolder,'/','00',time,'.sdf'];
-end
+fix=get(handles.popupmenu5,'string');
+prefix=fix{get(handles.popupmenu5,'value')};
+wkdir_name=['../',filefolder,'/',prefix,'00',time,'.sdf'];
 [b,h]=lv(wkdir_name);
 size_b=size(b);list_name='Grid Infomation';
 j=1;
@@ -447,6 +451,7 @@ for i = 1:size_b(2)
   end
 end
 guidata(hObject,handles);
+set(handles.listbox2,'Value',1.0); % Sensor goes to top
 set(handles.listbox2,'String',{c.id});
 
 
@@ -486,12 +491,7 @@ function pushbutton6_Callback(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 %filename=get(handles.edit10,'string');
-[filename,pathname]=uiputfile('*.eps');
-addpath('export_fig')
-fn=[pathname,filename];
-set(figure(1),'position',[50,50,350,300]);
-set(figure(1),'Color','white');
-export_fig(fn,'-p0')
+seps
 %seps(filename);
 
 
@@ -656,6 +656,29 @@ function popupmenu4_Callback(hObject, eventdata, handles)
 % --- Executes during object creation, after setting all properties.
 function popupmenu4_CreateFcn(hObject, eventdata, handles)
 % hObject    handle to popupmenu4 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: popupmenu controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+
+% --- Executes on selection change in popupmenu5.
+function popupmenu5_Callback(hObject, eventdata, handles)
+% hObject    handle to popupmenu5 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: contents = cellstr(get(hObject,'String')) returns popupmenu5 contents as cell array
+%        contents{get(hObject,'Value')} returns selected item from popupmenu5
+
+
+% --- Executes during object creation, after setting all properties.
+function popupmenu5_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to popupmenu5 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    empty - handles not created until after all CreateFcns called
 

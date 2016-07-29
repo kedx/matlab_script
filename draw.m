@@ -1,11 +1,11 @@
-function draw(datafile,variables,time,minvalue,maxvalue)
+function draw(datafile,prefix,variables,time,minvalue,maxvalue)
 %=======================================================
 % Plot range controled by minvalue and maxvalue.
 % If don't need change, set as -1 to use default value.
 %=======================================================
 
 % Get the data
-str = strcat('../',datafile,'/00',num2str(time),'.sdf');
+str = strcat('../',datafile,'/',prefix,'00',num2str(time),'.sdf');
 [b,h] = lv(str);
 data=gd(b,h,variables);
 grid=gd(b,h,'grid');
@@ -34,8 +34,9 @@ end
 colormap(jet);
 set(gcf,'position',[50,50,600,400]);
 set(gca, 'fontsize',11,'FontName','Helvetica');
-%set(gca,'XLim', [-12.8 12.8],'YLim',[-6.4,6.4])
 imagesc(x1*1e6,y1*1e6,data',[minvalue,maxvalue]);
+set(gca, 'fontsize',15,'FontName','Helvetica');
+%set(gca,'XLim', [-12.8 12.8],'YLim',[-6.4,6.4])
 axis xy; axis equal tight;
 colorbar;
 xlabel('x (\mum)'); ylabel('y (\mum)');
