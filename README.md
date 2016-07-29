@@ -55,4 +55,4 @@ x_px is used to plot phase space.
 
 ###Finally
 
-This program is under programming and unfinished. Welcome to tell me the bugs and help me improve this program.
+This program is under programming and unfinished. Welcome to tell me the bugs and help me to improve this program.
