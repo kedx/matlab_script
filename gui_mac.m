@@ -128,6 +128,8 @@ end
 spectrum=get(handles.checkbox4,'value');
 if spectrum==1
     datafile=get(handles.edit2,'string');
+    fix=get(handles.popupmenu5,'string');
+    prefix=fix{get(handles.popupmenu5,'value')};
     var=get(handles.popupmenu2,'string');
     variables=var{get(handles.popupmenu2,'value')};
     time=get(handles.edit4,'string');
@@ -142,7 +144,7 @@ if spectrum==1
         set(handles.popupmenu4,'value',get(handles.popupmenu4,'value')+1);
         color=col{get(handles.popupmenu4,'value')};
     end
-    en(datafile,variables,time,color);
+    en(datafile,prefix,variables,time,color);
 end
 % =============== 2D Log Plot =====================
 lognot=get(handles.checkbox5,'value');
@@ -161,12 +163,14 @@ end
 phase=get(handles.checkbox7,'value');
 if phase==1
     datafile=get(handles.edit2,'string');
+    fix=get(handles.popupmenu5,'string');
+    prefix=fix{get(handles.popupmenu5,'value')};
     variables=get(handles.edit11,'string');
     time=get(handles.edit4,'string');
     maxvalue=str2num(get(handles.edit5,'string'));
     minvalue=str2num(get(handles.edit6,'string'));
     figure;
-    x_px(datafile,variables,time,minvalue,maxvalue);
+    x_px(datafile,prefix,variables,time,minvalue,maxvalue);
 end
 guidata(hObject, handles);
 

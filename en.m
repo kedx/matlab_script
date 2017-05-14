@@ -1,5 +1,5 @@
-function en(datafile,variables,time,color)
-str = strcat('../',datafile,'/00',num2str(time),'.sdf');
+function en(datafile,prefix,variables,time,color)
+str = strcat('../',datafile,'/',prefix,'00',num2str(time),'.sdf');
 [b,h] = lv(str);
 en=gd(b,h,strcat('en/',variables));
 num=gd(b,h,strcat('grid/en/',variables));

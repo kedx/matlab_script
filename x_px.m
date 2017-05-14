@@ -1,6 +1,6 @@
-function x_px(datafile,variables,time,minvalue,maxvalue)
+function x_px(datafile,prefix,variables,time,minvalue,maxvalue)
 % Get the data
-str = strcat('../',datafile,'/00',num2str(time),'.sdf');
+str = strcat('../',datafile,'/',prefix,'00',num2str(time),'.sdf');
 [b,h] = lv(str);
 data1=gd(b,h,strcat('x_px/',variables));
 grid=gd(b,h,strcat('grid/x_px/',variables));

@@ -10,13 +10,12 @@ y1=y(1:length(grid.y)-1);
 n=floor(0.5*length(y1));
 data_cut=data(1:length(x1),n);
 
-
-set(gcf,'position',[50,50,600,400]);
-set(gca, 'fontsize',11);
-set(gca, 'linewidth',2);
-
 plot(x1*1e6,data_cut,'r','LineWidth',2.5);
-xlabel('x (\mum)'); ylabel('number density');
+xlabel('x (\mum)'); ylabel(variables,'Interpreter','none');
+%set(gcf,'position',[50,50,600,400]);
+set(gca,'xlim',[40,140]);
+set(gca, 'fontsize',15);
+set(gca, 'linewidth',2);
 hold on;
 %axis square
 %axis equal tight;

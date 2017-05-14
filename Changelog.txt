@@ -1,2 +1,10 @@
+Fixed prefix support in gui_mac.
+Fixed label display in cut.m, en.m and x_px.m.
+Added en_hist.m and xpx_hist.m to statistic from particle info.
+
+#######
+
+Old changes:
+
 Modified draw.m den_log.m to add prefix support.
 Modified gui_mac.fig and gui_mac.m to add prefix support.
