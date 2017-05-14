@@ -11,6 +11,8 @@ The goal of this program is to give a graphic user interface to the users, which
 
 Now, this script is only for 2D datafiles. If you want to analyze 1D or 3D datafiles, you can modify the source file on your own.
 
+![image](image.png)
+
 ###How
 
 To get started, put this folder along with your datafile folders.
