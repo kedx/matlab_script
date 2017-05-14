@@ -1,4 +1,4 @@
-Matlab GUI for SDF
+Matlab GUI for datafile
 ========================
 
 A Matlab GUI used to generate figures from SDF data files.
@@ -49,7 +49,7 @@ seps.m is used to save figures in 'eps' or 'pdf' formats.
 
 lv.m is used to list variables in the selected datafile.
 
-gd.m is used to read the SDF file.
+gd.m is used to read the datafile.
 
 x_px is used to plot phase space.
 
