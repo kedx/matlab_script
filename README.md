@@ -3,7 +3,7 @@ Matlab GUI for datafile
 
 A Matlab GUI used to generate figures from SDF data files.
 
-###What
+### What
 
 Every time generating a figure from a SDF file, a long command with many parameters and file names are needed to type in the command window without any mistakes. Such a business is boring and takes a lot of time doing repeating works.
 
@@ -11,7 +11,7 @@ The goal of this program is to give a graphic user interface to the users, which
 
 Now, this script is only for 2D datafiles. If you want to analyze 1D or 3D datafiles, you can modify the source file on your own.
 
-###How
+### How
 
 To get started, put this folder along with your datafile folders.
 
@@ -35,7 +35,7 @@ Select plotting styles and click "draw".
 
 The files being saved is at '../pic' folder by default in windows version (so you need to mkdir before saving) and show a window to let you choose in OS X and Linux versions.
 
-###Description of the source files
+### Description of the source files
 
 cut.m is used to plot a 1D line figure.
 
@@ -53,6 +53,6 @@ gd.m is used to read the datafile.
 
 x_px is used to plot phase space.
 
-###Finally
+### Finally
 
 This program is under programming and unfinished. Welcome to tell me the bugs and help me to improve this program.
